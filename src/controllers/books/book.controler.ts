@@ -10,7 +10,7 @@ export const BooksController = {
   }),
 
   fetchAllBook: asyncHandler(async (req, res) => {
-    validateUser(req, res);
+    // validateUser(req, res);
     const books = await BookService.fetchAllBooks(req.query);
     res.status(200).json({ message: "Sucessfully fetched all books", books });
   }),
@@ -49,8 +49,6 @@ export const BooksController = {
 
   emptySingleCart: asyncHandler(async (req, res) => {
     const userId = getUserId(req, res);
-    console.log(req.params);
-
     await BookService.emptySingleCart(req, res, userId);
     res.status(200).json({ message: "One item deleted successfully" });
   }),

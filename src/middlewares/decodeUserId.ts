@@ -1,14 +1,12 @@
 import jwt from "jsonwebtoken";
 
 export const getUserIdFromToken = (req) => {
-  const token = req.headers.authorization?.split(" ")[1]; // Assuming 'Bearer <token>'
-  console.log(token);
-
+  let token = req.headers.authorization?.split(" ")[1]; // Assuming 'Bearer <token>'
   if (!token) return null;
 
   try {
+    token = token.replace(/^"(.*)"$/, "$1");
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
 
     return decoded.id;
   } catch (error) {

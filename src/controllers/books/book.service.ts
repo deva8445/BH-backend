@@ -105,8 +105,6 @@ export const BookService = {
 
   async emptySingleCart(req, res, userId) {
     const { bookId } = req.params;
-    console.log(bookId);
-
     if (!bookId) {
       return res.status(400).json({ message: "Book ID is required" });
     }

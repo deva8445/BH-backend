@@ -11,7 +11,7 @@ export class CreateBookDto {
 
   @IsString()
   @IsNotEmpty()
-  auther: string;
+  author: string;
 
   @IsNumber()
   @IsNotEmpty()

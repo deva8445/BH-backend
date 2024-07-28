@@ -4,9 +4,12 @@ import { AppDataSource } from "./ormconfig";
 import { router } from "./routers/user.router";
 import { errorHandler } from "./middlewares/errorHandler";
 import { booksRouter } from "./routers/book.router";
+import cors from "cors";
+
 const app = express();
 const port = 5000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

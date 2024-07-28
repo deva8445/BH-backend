@@ -69,6 +69,10 @@ export const UserController = {
       { expiresIn: "1h" }
     );
 
-    return res.status(200).json({ message: "Login successful", token });
+    const { password: _, ...userInfo } = checkUser;
+
+    return res
+      .status(200)
+      .json({ message: "Login successful", token, user: userInfo });
   }),
 };

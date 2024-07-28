@@ -21,8 +21,11 @@ export class Book {
   @Column({ type: "bigint", nullable: true })
   publishYear: number;
 
-  // @Column({ type: "bigint" })
-  // quantity: number;
+  @Column({ type: "bigint" })
+  quantity: number;
+
+  @Column({ type: "varchar" })
+  url: number;
 
   @ManyToOne(() => Store, (store) => store.books)
   store: Store;
