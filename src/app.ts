@@ -1,9 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { AppDataSource } from "./ormconfig";
-import { router } from "./routers/user.router";
+import auth from "./routers/user.router";
 import { errorHandler } from "./middlewares/errorHandler";
-import { booksRouter } from "./routers/book.router";
+import books from "./routers/book.router";
+import payment from "./routers/payment.router";
 import cors from "cors";
 
 const app = express();
@@ -13,8 +14,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/auth", router);
-app.use("/books", booksRouter);
+app.use("/auth", auth);
+app.use("/books", books);
+app.use("/payment", payment);
 
 app.use(errorHandler);
 

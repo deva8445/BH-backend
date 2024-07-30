@@ -3,13 +3,15 @@ import { BooksController } from "../controllers/books/book.controler";
 import { validateRequest } from "../middlewares/validationMiddleware";
 import { CreateBookDto } from "../controllers/books/book.dto";
 
-export const booksRouter = express.Router();
+const router = express.Router();
 
-booksRouter.post("/", validateRequest(CreateBookDto), BooksController.create);
-booksRouter.get("/", BooksController.fetchAllBook);
+router.post("/", validateRequest(CreateBookDto), BooksController.create);
+router.get("/", BooksController.fetchAllBook);
 
-booksRouter.post("/cart", BooksController.addToCart);
-booksRouter.get("/cart", BooksController.fetchCartData);
-booksRouter.patch("/quantity", BooksController.updateQuantity);
-booksRouter.delete("/cart", BooksController.emptyCart);
-booksRouter.delete("/cart/:bookId", BooksController.emptySingleCart);
+router.post("/cart", BooksController.addToCart);
+router.get("/cart", BooksController.fetchCartData);
+router.patch("/quantity", BooksController.updateQuantity);
+router.delete("/cart", BooksController.emptyCart);
+router.delete("/cart/:bookId", BooksController.emptySingleCart);
+
+export default router;
